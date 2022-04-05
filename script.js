@@ -70,17 +70,13 @@ const renderFractalFromInput = () => {
     const size = getValue(sliders.size);
     const sides = getValue(sliders.sides);
     
-    renderFractal({...defaultEffects, size, sides})
+    renderFractal({...defaultEffects, size, sides});
 }
 
 
-window.addEventListener('load',function(){
+window.addEventListener('load', () => {
+    sliders.size.oninput = renderFractalFromInput;
+    sliders.sides.oninput = renderFractalFromInput;
+
     renderFractal(defaultEffects)
 })
-
-
-sliders.size.oninput = renderFractalFromInput
-sliders.sides.oninput = renderFractalFromInput
-
-
-
