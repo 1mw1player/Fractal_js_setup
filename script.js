@@ -5,15 +5,6 @@ const sliders = {
     sides: document.querySelector('#sliders #sides'),
 }
 
-const defaultEffects = {
-    size: 200,
-    sides: 5,
-    maxLevel: 3,
-    scale: 0.5,
-    spread: 0.8,
-    branches: 2,
-}
-
 const renderFractal = ({ size, sides, maxLevel, scale, spread, branches }) => {
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -66,11 +57,22 @@ const renderFractal = ({ size, sides, maxLevel, scale, spread, branches }) => {
 
 const getValue = (input) => parseInt(input.value);
 
+const defaultEffects = {
+    size: 200,
+    sides: 5,
+    maxLevel: 3,
+    scale: 0.5,
+    spread: 0.8,
+    branches: 2,
+}
+
 const renderFractalFromInput = () => {
-    const size = getValue(sliders.size);
-    const sides = getValue(sliders.sides);
+    const userInput = {
+        size: getValue(sliders.size),
+        sides: getValue(sliders.sides),
+    };
     
-    renderFractal({...defaultEffects, size, sides});
+    renderFractal({ ...defaultEffects, ...userInput });
 }
 
 
